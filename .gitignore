@@ -1,2 +1,4 @@
 node_modules/
-webapps/
+static/
+_public_/
+config/*

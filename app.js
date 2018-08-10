@@ -1,10 +1,19 @@
-const serve = require('koa-static');
 const Koa = require('koa');
+const cors = require('@koa/cors');
+
 const app = new Koa();
 
-// app.use(serve('webapps/fin.cons.fsimap.maintain'));
-app.use(serve('webapps/Walkthrough/webapp'))
-app.use(serve('webapps/sapui5-dist'))
+
+// CORS https://github.com/koajs/cors
+app.use(cors({
+    origin: '*'
+}));
+
+const serve = require('koa-static');
+app.use(serve('webapps/'));
+
+const router = require('./routes');
+app.use(router.routes());
 
 // app.use(serve({rootDir: 'webapps', rootPath: 'fin.cons.fsimap.maintain'}))
 
