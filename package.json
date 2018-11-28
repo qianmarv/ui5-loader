@@ -10,11 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^2.2.2",
     "koa": "^2.5.2",
     "koa-mount": "^3.0.0",
+    "koa-proxies": "^0.8.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
     "lodash": "^4.17.10",
+    "nodegit": "^0.23.0",
     "path": "^0.12.7"
   }
 }
