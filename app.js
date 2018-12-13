@@ -1,12 +1,31 @@
-const Koa   = require('koa');
-const mount = require('koa-mount');
-const serve = require('koa-static');
+const Koa    = require('koa');
+const mount  = require('koa-mount');
+const serve  = require('koa-static');
+const Router = require('koa-router');
 
 const appconfig = require('./appconfig');
 const path = require('path');
 
+
+const router = new Router();
+
 const app = new Koa();
 
+// Router configures
+router.get('/api/pull',async (ctx, next) =>{
+  //TODO move to a sperate router module
+  const util = require('util');
+  const exec = util.promisify(require('child_process').exec);
+  const path = require('path');
+
+  async function gitpull(){
+    // await exec('cd ../zwl_icr_manual_assignment');
+    // await exec('cd ~/ws/stable_matching_method');
+    const { stdout, stderr } = await exec('cd ../zwl_icr_manual_assignment && git pull');
+    ctx.body = stderr === "" ? stdout : stderr;
+  }
+  await gitpull();
+});
 // const proxy = require('koa-proxies');
 // const cors = require('koa2-cors');
 //CORS
@@ -32,7 +51,7 @@ const app = new Koa();
 //   logs: true
 // }));
 
-
+app.use(router.routes());
 
 // Load Fiori Launchpad Page
 app.use(mount("/", serve('static/')));
