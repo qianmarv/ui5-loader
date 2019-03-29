@@ -1,6 +1,3 @@
 node_modules/
-static/
-_public_/
-appconfig.js
-apps/
 test.js
+db/flpconfig.json
