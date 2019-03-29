@@ -12,21 +12,24 @@ const router = new Router();
 const app = new Koa();
 
 // Router configures
-router.get('/api/pull',async (ctx, next) =>{
+router.get('/api/pull/:pid',async (ctx, next) =>{
   //TODO move to a sperate router module
   const util = require('util');
   const exec = util.promisify(require('child_process').exec);
   const path = require('path');
 
-  async function gitpull(){
-    // await exec('cd ../zwl_icr_manual_assignment');
-    // await exec('cd ~/ws/stable_matching_method');
-    const { stdout, stderr } = await exec('cd ../zwl_icr_manual_assignment && git pull');
-    ctx.body = stderr === "" ? stdout : stderr;
+  async function gitpull(sProjectId){
+    try{
+      const { stdout, stderr } = await exec('cd ../' + sProjectId + ' && git pull');
+      ctx.body = stderr === "" ? stdout : stderr;
+    }catch(err){
+      ctx.body = err.stderr;
+    }
   }
-  await gitpull();
+  console.log(ctx.params.pid);
+  await gitpull(ctx.params.pid);
 });
-// const proxy = require('koa-proxies');
+ // const proxy = require('koa-proxies');
 // const cors = require('koa2-cors');
 //CORS
 // app.use(cors({origin: '*'}));
@@ -45,11 +48,12 @@ router.get('/api/pull',async (ctx, next) =>{
 // }));
 
 //Proxy
-// app.use(proxy('/sap/opu',{
-//   target: 'http://ldcier9.wdf.sap.corp:50000',
-//   changeOrigin: true,
-//   logs: true
-// }));
+ // app.use(proxy('/sap/opu',{
+ //   target: 'https://ldai4er9.wdf.sap.corp:44300',
+ //   secure: false,
+ //   // changeOrigin: true,
+ //   logs: true
+ // }));
 
 app.use(router.routes());
 
