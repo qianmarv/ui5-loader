@@ -1,0 +1,1 @@
+{"application":{"configuration":{"root_dir":"/var/www/static/"},"tiles":[{"fiori_id":"X001","title":"Tile Management","namespace":"mycompany.myapp.MyWorklistApp","enabled":true,"app_path":"proj_mgmt","semantic_object":"Tile","action":"define"}]}}

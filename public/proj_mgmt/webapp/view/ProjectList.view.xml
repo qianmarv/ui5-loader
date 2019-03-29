@@ -1,0 +1,105 @@
+<mvc:View
+	  controllerName="mycompany.myapp.MyWorklistApp.controller.ProjectList"
+	  xmlns="sap.ui.table"
+	  xmlns:m="sap.m"
+	  xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic"
+	  xmlns:u="sap.ui.unified"
+	  xmlns:c="sap.ui.core"
+	  height="100%">
+  <semantic:SemanticPage
+      enableScrolling="true">
+		  <semantic:content>
+			  <Table
+				    id="table"
+            visibleRowCountMode="Auto"
+            rowActionCount="2"
+				    rows="{/}">
+				  <toolbar>
+					  <m:Toolbar>
+						  <m:Title id="title" text="Tiles"></m:Title>
+						  <m:ToolbarSpacer/>
+              <m:Button icon="sap-icon://refresh" press="onRefresh" />
+              <m:Button icon="sap-icon://delete" press="onDelete" />
+              <m:Button icon="sap-icon://add" press="onAddTile" />
+					  </m:Toolbar>
+				  </toolbar>
+				  <columns>
+					  <Column>
+						  <m:Label text="Fiori Id" />
+						  <template>
+							  <m:Text text="{fiori_id}" wrapping="false"/>
+						  </template>
+					  </Column>
+
+					  <Column>
+						  <m:Label text="Title" />
+						  <template>
+							  <m:Text text="{title}" wrapping="false"/>
+						  </template>
+					  </Column>
+					  <Column>
+						  <m:Label text="Namespace" />
+						  <template>
+							  <m:Text text="{namespace}" wrapping="false"/>
+						  </template>
+					  </Column>
+					  <Column>
+						  <m:Label text="Hash URI" />
+						  <template>
+							  <m:Text text="{= '#' + ${semantic_object} + '-' + ${action}}" wrapping="false"/>
+						  </template>
+					  </Column>
+					  <Column hAlign="End">
+						  <m:Label text="Last Sync On" />
+						  <template>
+							  <m:Text text="{path:'last_sync_on',formatter:'.formatter.formatDateTime'}" wrapping="false"/>
+						  </template>
+					  </Column>
+					  <Column hAlign="End">
+						  <m:Label text="Enabled" />
+						  <template>
+							  <m:Text text="{enabled}" wrapping="false"/>
+						  </template>
+					  </Column>
+				  </columns>
+          <!-- <items> -->
+          <!--   <ColumnListItem vAlign="Middle" type="Navigation" press="onNav"> -->
+          <!--     <cells> -->
+					<!-- 		  <m:Text text="{fiori_id}" wrapping="false"/> -->
+
+					<!-- 		  <m:Text text="{title}" wrapping="false"/> -->
+
+					<!-- 		  <m:Text text="{namespace}" wrapping="false"/> -->
+
+					<!-- 		  <m:Text text="{semantic_object}" wrapping="false"/> -->
+
+					<!-- 		  <m:Text text="{path:'last_sync_on',formatter:'.formatter.formatDateTime'}" wrapping="false"/> -->
+
+					<!-- 		  <m:Text text="{enabled}" wrapping="false"/> -->
+          <!--     </cells> -->
+          <!--   </ColumnListItem> -->
+          <!-- </items> -->
+
+          <rowActionTemplate>
+            <RowAction>
+              <items>
+                <RowActionItem
+                    type="Custom"
+                    press="onSync"
+                    icon="sap-icon://synchronize"
+                    visible="true">
+                </RowActionItem>
+
+                <RowActionItem
+                    type="Navigation"
+                    press="onNav"
+                    visible="true">
+                </RowActionItem>
+              </items>
+            </RowAction>
+          </rowActionTemplate>
+			  </Table>
+		  </semantic:content>
+  </semantic:SemanticPage>
+</mvc:View>

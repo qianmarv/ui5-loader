@@ -1,0 +1,10 @@
+{
+	"applications":{
+		"MatchingMethod-define":{
+			"additionalInformation":"SAPUI5.Component=mycompany.myapp.MyWorklistApp",
+			"applicationType":"URL",
+			"url":"/proj_mgmt/webapp",
+			"title":"Tile Management"
+		}
+	}
+}
