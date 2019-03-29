@@ -1,35 +1,19 @@
 {
-  "name": "ui5-loader",
+  "name": "ui5loader",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc && node dist/index.js",
-    "start": "pm2 start app.js --watch",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "@types/es6-promise": "^3.3.0",
-    "http-proxy": "^1.17.0",
+    "config": "^3.0.1",
     "koa": "^2.7.0",
-    "koa-mount": "^3.0.0",
-    "koa-proxies": "^0.8.1",
+    "koa-body": "^4.1.0",
     "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0",
-    "lodash": "^4.17.10",
-    "node-json-db": "^0.11.0",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "@types/http-proxy": "^1.16.2",
-    "@types/koa": "^2.0.47",
-    "@types/koa-mount": "^3.0.1",
-    "@types/koa-router": "^7.0.35",
-    "@types/koa-static": "^4.0.0",
-    "@types/node": "^10.12.14",
-    "@types/node-json-db": "0.0.1",
-    "install": "^0.12.2"
+    "node-json-db": "^0.11.0"
   }
 }
