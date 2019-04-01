@@ -15,8 +15,10 @@ async function listApps(ctx, next) {
 }
 
 async function generateApps(ctx, next) {
-  var config = await _getApps();
-  await appServ.persist(config);
+  let config = await _getApps();
+  let sDir  = await dbServ.getRootDir();
+  let sFile = path.join(sDir, "appconfig/fioriSandboxConfig");
+  await appServ.persist(config, sFile);
   ctx.body = {};
   ctx.status = 201;
   await next();
@@ -25,7 +27,7 @@ async function generateApps(ctx, next) {
 async function syncApp(ctx, next){
   // console.log(`appController=>SyncApp: id=${ctx.params.id}`);
   var sFioriId = ctx.params.id;
-  var oConfig  = await dbServ.getConfiguration();
+  // var oConfig  = await dbServ.getConfiguration();
   // console.log(`appController=>SyncApp: app_path=${oConfig.rootDir}`);
   var oTile = await dbServ.getTile(sFioriId);
   var sDir  = await dbServ.getRootDir();

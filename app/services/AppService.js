@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 
+
 module.exports = {
   getApps: function(aTile){
     return new Promise(function(resolve, reject){
@@ -25,10 +26,10 @@ module.exports = {
       });
     });
   },
-  persist: function(oData){
+  persist: function(oData, sFile){
     return new Promise(function(resolve, reject){
-      var file = '/var/www/static/appconfig/fioriSandboxConfig.json';
-      fs.writeFileSync(file, JSON.stringify(oData));
+      // var file = '/var/www/static/appconfig/fioriSandboxConfig.json';
+      fs.writeFileSync(sFile, JSON.stringify(oData));
       resolve();
     });
   }
