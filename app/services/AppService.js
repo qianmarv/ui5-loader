@@ -30,7 +30,7 @@ module.exports = {
   persist: async function(oData){
     // return new Promise(function(resolve, reject){
     let sDir  = await dbServ.getRootDir();
-    let sFile = path.join(sDir, "appconfig/fioriSandboxConfig");
+    let sFile = path.join(sDir, "appconfig/fioriSandboxConfig.json");
 
     // var file = '/var/www/static/appconfig/fioriSandboxConfig.json';
     fs.writeFileSync(sFile, JSON.stringify(oData));
