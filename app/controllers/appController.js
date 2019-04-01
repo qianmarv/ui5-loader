@@ -16,9 +16,9 @@ async function listApps(ctx, next) {
 
 async function generateApps(ctx, next) {
   let config = await _getApps();
-  let sDir  = await dbServ.getRootDir();
-  let sFile = path.join(sDir, "appconfig/fioriSandboxConfig");
-  await appServ.persist(config, sFile);
+  // let sDir  = await dbServ.getRootDir();
+  // let sFile = path.join(sDir, "appconfig/fioriSandboxConfig");
+  await appServ.persist(config);
   ctx.body = {};
   ctx.status = 201;
   await next();

@@ -1,7 +1,8 @@
 "use strict";
 
 const fs = require('fs');
-
+const path = require('path');
+const dbServ   = require('./DBService.js');
 
 module.exports = {
   getApps: function(aTile){
@@ -26,11 +27,14 @@ module.exports = {
       });
     });
   },
-  persist: function(oData, sFile){
-    return new Promise(function(resolve, reject){
-      // var file = '/var/www/static/appconfig/fioriSandboxConfig.json';
-      fs.writeFileSync(sFile, JSON.stringify(oData));
-      resolve();
-    });
+  persist: async function(oData){
+    // return new Promise(function(resolve, reject){
+    let sDir  = await dbServ.getRootDir();
+    let sFile = path.join(sDir, "appconfig/fioriSandboxConfig");
+
+    // var file = '/var/www/static/appconfig/fioriSandboxConfig.json';
+    fs.writeFileSync(sFile, JSON.stringify(oData));
+    return;
+    // });
   }
 };

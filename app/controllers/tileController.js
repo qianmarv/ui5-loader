@@ -5,6 +5,10 @@ const ProcServ = require('../services/ProcessService.js');
 async function _persist(){
   var tiles = await dbServ.getTiles();
   var apps  = await appServ.getApps(tiles);
+
+  // let sDir  = await dbServ.getRootDir();
+  // let sFile = path.join(sDir, "appconfig/fioriSandboxConfig");
+
   await appServ.persist(apps);
 }
 
