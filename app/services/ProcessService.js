@@ -28,12 +28,14 @@ module.exports = {
       }
       var sPath = path.join(sDir, sTarget);
       if(fs.existsSync(sPath)){
-        throw `Project already exist: ${sPath}`;
+        // throw `Project already exist: ${sPath}`;
+        return `Project already exist: ${sPath}, skip git clone.`;
+      }else{
+        const { stdout, stderr } = await exec(`cd ${sDir} && git clone ${sUrl} ${sTarget}`);
+        console.log(stdout);
+        console.log(stderr);
+        return stderr === "" ? stdout : stderr;
       }
-      const { stdout, stderr } = await exec(`cd ${sDir} && git clone ${sUrl} ${sTarget}`);
-      console.log(stdout);
-      console.log(stderr);
-      return stderr === "" ? stdout : stderr;
     }catch(err){
       console.log(err);
       return err.stderr;
