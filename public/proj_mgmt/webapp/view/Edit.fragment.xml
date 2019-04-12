@@ -43,16 +43,19 @@
 				<Label text="Action"  required="true"/>
 				<Input value="{action}" />
 
-				<Label text="Enabled" />
-				<CheckBox selected="{enabled}" />
+        <Label text="Startup Parameter"/>
+        <Input value="{querystring}" />
 
-				<!-- <Label text="Last Sync On" /> -->
-				<!-- <Text text="{path: 'last_sync_on', formatter: '.formatter.formatDateTime'}" /> -->
+        <Label text="Enabled" />
+        <CheckBox selected="{enabled}" />
 
-				<!-- <Label text="Latest Commmit At" /> -->
-				<!-- <Text text="{path: 'LastCommitAt', formatter: '.formatter.formatDateTime'}" /> -->
+        <Label text="Last Sync On" />
+        <Text text="{path: 'last_sync_on', formatter: '.formatter.formatDateTime'}" />
 
-			</f:content>
-		</f:SimpleForm>
-	</VBox>
+        <!-- <Label text="Latest Commmit At" /> -->
+        <!-- <Text text="{path: 'LastCommitAt', formatter: '.formatter.formatDateTime'}" /> -->
+
+      </f:content>
+    </f:SimpleForm>
+  </VBox>
 </core:FragmentDefinition>

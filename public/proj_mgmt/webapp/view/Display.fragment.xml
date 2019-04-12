@@ -43,11 +43,14 @@
 				<Label text="Action" />
 				<Text text="{action}" />
 
+        <Label text="Startup Parameter"/>
+        <Text text="{querystring}" />
+
 				<Label text="Enabled" />
 				<Text text="{enabled}" />
 
-				<!-- <Label text="Last Sync On" /> -->
-				<!-- <Text text="{path: 'last_sync_on', formatter: '.formatter.formatDateTime'}" /> -->
+        <Label text="Last Sync On" />
+        <Text text="{path: 'last_sync_on', formatter: '.formatter.formatDateTime'}" />
 
 				<!-- <Label text="Latest Commmit At" /> -->
 				<!-- <Text text="{path: 'LastCommitAt', formatter: '.formatter.formatDateTime'}" /> -->

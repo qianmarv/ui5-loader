@@ -175,7 +175,7 @@ sap.ui.define([
 				return oFormFragment;
 			}
 
-			oFormFragment = sap.ui.xmlfragment(this.getView().getId(), "mycompany.myapp.MyWorklistApp.view." + sFragmentName);
+			oFormFragment = sap.ui.xmlfragment(this.getView().getId(), "mycompany.myapp.MyWorklistApp.view." + sFragmentName,this);
 
 			this._formFragments[sFragmentName] = oFormFragment;
 			return this._formFragments[sFragmentName];
@@ -241,6 +241,8 @@ sap.ui.define([
             oDataModel.setData(oTile);
             this._setBusy(false);
           }.bind(this));
+      }else{
+        oDataModel.setData({});
       }
 
 			this.getView().bindElement({
