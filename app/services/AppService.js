@@ -17,6 +17,7 @@ module.exports = {
           additionalInformation: `SAPUI5.Component=${each.namespace}`,
           applicationType: "URL",
           url:`/${each.app_path}/webapp`,
+          querystring: each.querystring||"",
           title: each.title
         };
         return config;
